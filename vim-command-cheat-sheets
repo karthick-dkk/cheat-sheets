@@ -1,0 +1,104 @@
+# =========================
+# VIM QUICK COMMANDS CHEAT SHEET
+# =========================
+
+# --- MODES ---
+i        # Insert mode (start typing text)
+Esc      # Back to Normal mode
+v        # Visual mode (select text)
+Ctrl+v   # Visual block mode (select columns)
+:        # Command mode (run commands)
+
+# --- FILES ---
+:e filename        # Open a file
+:w                 # Save file
+:q                 # Quit Vim
+:wq or :x          # Save and quit
+:q!                # Quit without saving
+:e scp://user@host//path/file   # Open remote file over SSH
+
+# --- NAVIGATION ---
+h / l              # Move left / right
+j / k              # Move down / up
+w / e              # Jump forward by word
+b                  # Jump backward by word
+0                  # Start of line
+$                  # End of line
+gg                 # Top of file
+G                  # Bottom of file
+:n                 # Go to line n  (example :10)
+
+# --- EDITING ---
+x                  # Delete character
+dd                 # Delete line
+yy                 # Yank (copy) line
+p                  # Paste after cursor
+P                  # Paste before cursor
+u                  # Undo
+Ctrl+r             # Redo
+.                  # Repeat last command
+
+# --- VISUAL BLOCK (COLUMN EDITING) ---
+Ctrl+v             # Start block select
+I (then text) Esc  # Insert text at start of lines
+A (then text) Esc  # Append text at end of lines
+
+# --- GLOBAL FILE OPERATIONS ---
+ggVGy              # Copy entire file
+ggVGd              # Delete entire file
+ggVGgU             # Make entire file UPPERCASE
+gg=G               # Auto-indent entire file
+ggVGJ              # Join all lines
+
+# --- SEARCH & REPLACE ---
+/word              # Search for 'word'
+n / N              # Next / previous match
+:%s/foo/bar/g      # Replace all 'foo' with 'bar'
+:1,10s/foo/bar/g   # Replace 'foo' with 'bar' in lines 1–10
+:%s/foo/bar/gc     # Replace with confirmation
+
+# --- MACROS (AUTOMATION) ---
+qa                 # Start recording into register a
+(do something)     
+q                  # Stop recording
+@a                 # Run macro a
+@@                 # Repeat last macro
+
+# --- REGISTERS & MARKS ---
+"ay                # Yank into register a
+"ap                # Paste from register a
+ma                 # Set mark a
+`a                 # Jump to mark a
+
+# --- SPLITS & TABS ---
+:split filename    # Horizontal split
+:vsplit filename   # Vertical split
+Ctrl+w h/j/k/l     # Move between panes
+Ctrl+w w           # Cycle through panes
+:tabnew filename   # Open new tab
+gt / gT            # Next / previous tab
+
+# --- BUFFERS & SESSIONS ---
+:ls                # List buffers
+:b1                # Switch to buffer 1
+:b#                # Switch to last buffer
+:mksession!        # Save session
+:source Session.vim  # Load session
+
+# --- COMMAND LINE TRICKS ---
+:!ls               # Run shell command
+:!python file.py   # Run Python script
+Ctrl+z             # Suspend Vim to shell
+fg                 # Return to Vim
+
+# --- BASIC .vimrc CONFIG (AUTOMATION) ---
+set number
+set relativenumber
+set autoindent
+set smartcase
+set ignorecase
+syntax on
+
+# =========================
+# END OF CHEAT SHEET
+# =========================
