@@ -1,104 +1,125 @@
-# =========================
-# VIM QUICK COMMANDS CHEAT SHEET
-# =========================
+# ===============================
+#  VIM Complete Advanced Command Cheat Sheet
+# ===============================
 
-# --- MODES ---
-i        # Insert mode (start typing text)
-Esc      # Back to Normal mode
-v        # Visual mode (select text)
-Ctrl+v   # Visual block mode (select columns)
-:        # Command mode (run commands)
+# --- Modes ---
+i            # Insert mode
+I            # Insert at beginning of line
+a            # Append after cursor
+A            # Append at end of line
+o            # Open new line below
+O            # Open new line above
+Esc          # Back to Normal mode
+v            # Visual mode (select text)
+V            # Visual line mode
+Ctrl+v       # Visual block mode
+:            # Command mode
 
-# --- FILES ---
-:e filename        # Open a file
-:w                 # Save file
-:q                 # Quit Vim
-:wq or :x          # Save and quit
-:q!                # Quit without saving
+# --- File Operations ---
+:e filename             # Open a file
 :e scp://user@host//path/file   # Open remote file over SSH
+:w                      # Save file
+:q                      # Quit Vim
+:wq or :x               # Save and quit
+:q!                     # Quit without saving
+:qa!                    # Quit all without saving
+:mksession my.vim       # Save session
+:source my.vim          # Load session
 
-# --- NAVIGATION ---
-h / l              # Move left / right
-j / k              # Move down / up
-w / e              # Jump forward by word
-b                  # Jump backward by word
-0                  # Start of line
-$                  # End of line
-gg                 # Top of file
-G                  # Bottom of file
-:n                 # Go to line n  (example :10)
+# --- Navigation ---
+h / l       # Move left / right
+j / k       # Move down / up
+w / e       # Forward by word / end of word
+b           # Back by word
+0           # Start of line
+$           # End of line
+gg          # Top of file
+G           # Bottom of file
+5G / :5     # Go to line 5
+H / M / L   # Top / Middle / Bottom of screen
+} / {       # Forward / Backward by paragraph
+Ctrl-d      # Half page down
+Ctrl-u      # Half page up
+Ctrl-f      # Page forward
+Ctrl-b      # Page backward
+%           # Jump to matching bracket
+Ctrl-o      # Older cursor position
+Ctrl-i      # Newer cursor position
 
-# --- EDITING ---
-x                  # Delete character
-dd                 # Delete line
-yy                 # Yank (copy) line
-p                  # Paste after cursor
-P                  # Paste before cursor
-u                  # Undo
-Ctrl+r             # Redo
-.                  # Repeat last command
+# --- Editing ---
+x           # Delete character
+dd / ndd    # Delete line / n lines
+yy / nyy    # Yank (copy) line / n lines
+p / P       # Paste after / before cursor
+xp          # Swap two characters
+r<char>     # Replace single character
+R           # Replace mode (overwrite)
+u           # Undo
+Ctrl-r      # Redo
+.           # Repeat last command
+>> / <<     # Indent / Un-indent line
+J           # Join line with next
+ggVGy       # Copy entire file
+ggVGd       # Delete entire file
+ggVGJ       # Join all lines
+gg=G        # Auto-indent entire file
+ggVGgU      # Make entire file UPPERCASE
 
-# --- VISUAL BLOCK (COLUMN EDITING) ---
-Ctrl+v             # Start block select
-I (then text) Esc  # Insert text at start of lines
-A (then text) Esc  # Append text at end of lines
+# --- Search & Replace ---
+/word       # Search forward
+?word       # Search backward
+n / N       # Next / Previous match
+:%s/foo/bar/g     # Replace all
+:%s/foo/bar/gc    # Replace with confirm
+:1,10s/foo/bar/g  # Replace in lines 1–10
+:.,$s/foo/bar/g   # Replace from current line to end
 
-# --- GLOBAL FILE OPERATIONS ---
-ggVGy              # Copy entire file
-ggVGd              # Delete entire file
-ggVGgU             # Make entire file UPPERCASE
-gg=G               # Auto-indent entire file
-ggVGJ              # Join all lines
+# --- Visual Mode Tricks ---
+> / <       # Indent / Un-indent selection
+y / d       # Yank / Delete selection
+~           # Toggle case
+I <text>    # Insert text at start of selected lines
+A <text>    # Append text at end of selected lines
 
-# --- SEARCH & REPLACE ---
-/word              # Search for 'word'
-n / N              # Next / previous match
-:%s/foo/bar/g      # Replace all 'foo' with 'bar'
-:1,10s/foo/bar/g   # Replace 'foo' with 'bar' in lines 1–10
-:%s/foo/bar/gc     # Replace with confirmation
+# --- Buffers, Splits & Tabs ---
+:split file          # Horizontal split
+:vsplit file         # Vertical split
+Ctrl-w h/j/k/l       # Move between panes
+Ctrl-w w             # Cycle panes
+:tabnew filename     # New tab
+gt / gT              # Next / Previous tab
+:ls                  # List buffers
+:b1 / :b#            # Switch buffer 1 / last buffer
+:bnext / :bprev      # Next / Previous buffer
+:bd                  # Close buffer
 
-# --- MACROS (AUTOMATION) ---
-qa                 # Start recording into register a
-(do something)     
-q                  # Stop recording
-@a                 # Run macro a
-@@                 # Repeat last macro
+# --- Macros & Registers ---
+qa          # Record macro into register a
+q           # Stop recording
+@a          # Run macro a
+@@          # Repeat last macro
+:reg        # Show registers
+"ayy / "ap  # Yank / Paste with register a
+ma / `a     # Set / Jump to mark a
+:%y+        # Copy entire file to system clipboard
+"+p         # Paste from system clipboard
 
-# --- REGISTERS & MARKS ---
-"ay                # Yank into register a
-"ap                # Paste from register a
-ma                 # Set mark a
-`a                 # Jump to mark a
+# --- Command Line Tricks ---
+:!ls              # Run shell command
+:!python file.py  # Run Python script
+Ctrl+z            # Suspend Vim
+fg                # Resume Vim
 
-# --- SPLITS & TABS ---
-:split filename    # Horizontal split
-:vsplit filename   # Vertical split
-Ctrl+w h/j/k/l     # Move between panes
-Ctrl+w w           # Cycle through panes
-:tabnew filename   # Open new tab
-gt / gT            # Next / previous tab
-
-# --- BUFFERS & SESSIONS ---
-:ls                # List buffers
-:b1                # Switch to buffer 1
-:b#                # Switch to last buffer
-:mksession!        # Save session
-:source Session.vim  # Load session
-
-# --- COMMAND LINE TRICKS ---
-:!ls               # Run shell command
-:!python file.py   # Run Python script
-Ctrl+z             # Suspend Vim to shell
-fg                 # Return to Vim
-
-# --- BASIC .vimrc CONFIG (AUTOMATION) ---
+# --- Useful .vimrc Settings ---
 set number
 set relativenumber
 set autoindent
 set smartcase
 set ignorecase
 syntax on
+set paste
+set nopaste
 
-# =========================
+# ===============================
 # END OF CHEAT SHEET
-# =========================
+# ===============================
